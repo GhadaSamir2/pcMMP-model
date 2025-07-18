@@ -28,7 +28,7 @@ Follow these steps to set up the simulation environment:
     https://github.com/GhadaSamir2/pcMMP-model.git
 
 #### 2. Navigate to the project directory
-    cd pcMMP
+    cd pcMMP-model
 
 #### 3. Make the SoPlex binary executable
     chmod +x ./soplex-2.0.0.linux.x86_64.gnu.opt
