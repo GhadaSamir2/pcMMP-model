@@ -25,7 +25,7 @@ Follow these steps to set up the simulation environment:
 
 #### 1. Clone the Repository
 
-    git clone https://github.com/GhadaSamir2/pcMMP.git
+    https://github.com/GhadaSamir2/pcMMP-model.git
 
 #### 2. Navigate to the project directory
     cd pcMMP
