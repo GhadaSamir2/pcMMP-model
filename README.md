@@ -29,13 +29,15 @@ Follow these steps to set up the simulation environment:
 
 #### 2. Navigate to the project directory
     cd pcMMP-model
-
-#### 3. Make the SoPlex binary executable
+#### 3. Make the Figures folder (for saving simulation plots)
+    mkdir Figures
+   
+#### 4. Make the SoPlex binary executable
     chmod +x ./soplex-2.0.0.linux.x86_64.gnu.opt
-#### 4. Verify SoPlex is working
+#### 5. Verify SoPlex is working
     ./soplex-2.0.0.linux.x86_64.gnu.opt
 
-#### 5. Run the notebooks
+#### 6. Run the notebooks
 Open the Jupyter notebooks in your browser to start the simulation
 
 
