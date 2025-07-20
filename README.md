@@ -1,6 +1,6 @@
 # pcMMP
 
-Proteome-constrained of *Methanococcus maripaludis* (**pcMMP**). 
+The proteome-constraint model of *Methanococcus maripaludis* (**pcMMP**). 
 
 ## Requirements
 
