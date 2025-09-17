@@ -9,7 +9,8 @@ Make sure you have **Python 3.11.13+** installed. Required Python packages inclu
 - cobra==0.29.1  
 - matplotlib==3.10.3  
 - numpy==2.3.1  
-- pandas==2.3.0  
+- pandas==2.3.0
+- openpyxl==3.1.5  
 
 You can install all dependencies using:
 
