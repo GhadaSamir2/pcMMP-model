@@ -50,7 +50,7 @@ class Lp_File_Constraints:
             equation = f'{equation} = 0\n'
             self.lp_file.write(equation)
 
-    def apply_kcat_constrain(self):
+    def apply_kcat_constraint(self):
         for _, row in self.complexes_sheet.iterrows():
             Reactions = literal_eval(row["Reactions"])
             if len(Reactions) > 1:
@@ -109,7 +109,7 @@ class Lp_File_Constraints:
 
         
         
-    def apply_ribosome_constrain(self, ID_ribosome, kcat):
+    def apply_ribosome_constraint(self, ID_ribosome, kcat):
         equation_ribosome=''
         counter_eR=itertools.count(start=1)
         for _,row in self.gene_protein_sheet.iterrows():
