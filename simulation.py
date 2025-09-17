@@ -37,6 +37,7 @@ class Simulation:
         self.complex_ATP_ID=None
         self.set_constraint=[]
         self.command=None
+        self.aa_acids_molecule=None
         
     def read_excel_file(self, filename):
         excel_data = pd.read_excel(filename, sheet_name=None)
@@ -60,10 +61,10 @@ class Simulation:
         self.lp_file_constraints.mu=self.mu
         self.lp_file_constraints.open_lp_file(self.file_path,self.objective,self.optimization_type)
         self.lp_file_constraints.apply_sv_constraint()
-        self.lp_file_constraints.apply_kcat_constrain()
+        self.lp_file_constraints.apply_kcat_constraint()
         self.lp_file_constraints.metabolic_mass()
         self.lp_file_constraints.up_mass(self.up_protein_ID, self.up_MW)
-        self.lp_file_constraints.apply_ribosome_constrain(self.ribosome_ID, self.kcat_ribo)
+        self.lp_file_constraints.apply_ribosome_constraint(self.ribosome_ID, self.kcat_ribo)
         self.lp_file_constraints.rRNA_mass(self.ribosome_ID, self.rRNA_MW)
         self.lp_file_constraints.ribosome_mass(self.ribosome_ID)
         self.lp_file_constraints.methanogenesis_mass( )
@@ -76,8 +77,9 @@ class Simulation:
         self.lp_file_constraints.add_constraint("metaboicMass + ribosome_mass + UP - total_protein = 0")
         
         self.lp_file_constraints.add_constraint("rRNA + tRNA + mRNA  - RNA= 0")
-       
-        self.lp_file_constraints.add_constraint("total_protein + RNA + Glycogen = 0.93")
+
+        if self.aa_acids_molecule!=True:
+            self.lp_file_constraints.add_constraint("total_protein + RNA + Glycogen = 0.93")
         
         if self.set_constraint:
            
@@ -138,7 +140,7 @@ class Simulation:
     def set_parameter(self,GAM=None,NGAM=None, objective=None, optimization_type="Minimize",
                       biomass_ID="R4799", GAM_ID="R4800", NGAM_ID="R4801", glycogen_ID="R2879", glycogen_MW=162,
                       up_protein_ID="R2871", up_MW=49919.951183051555, ribosome_ID="R2061", rRNA_MW=1444610,k_mRNA=0.034,k_deg=8.3,
-                      k_tRNA=2.73,kcat_ribo=22, file_path=None, output_file=None, model_file=None, 
+                      k_tRNA=2.73,kcat_ribo=22, file_path=None, output_file=None, model_file=None, aa_acids_molecule=False,
                       excel_file=None):
         
         self.model = cobra.io.read_sbml_model(model_file)
@@ -160,6 +162,7 @@ class Simulation:
         self.k_mRNA=k_mRNA
         self.k_deg=k_deg
         self.k_tRNA=k_tRNA
+        self.aa_acids_molecule=aa_acids_molecule
         self.file_path = file_path
         self.output_file = output_file
         self.read_excel_file(excel_file)
