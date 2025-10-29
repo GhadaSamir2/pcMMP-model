@@ -255,6 +255,16 @@ class Lp_File_Constraints:
         equation+=' - mRNA = 0\n'.format()   
         self.lp_file.write(equation)
         
+    def GAPOR(self):
+        c= next(self.counter)
+        complex_GAPOR_ID="R2196"
+        value=(70849.0654/1000)*(1/self.mu) 
+        equation='c{} : {}  {} - GAPOR = 0 \n'.format(c,value,complex_GAPOR_ID)
+        self.lp_file.write(equation)
+        c= next(self.counter)
+        equation2='c{} : GAPOR - 0.01 total_protein = 0 \n'.format(c)
+        self.lp_file.write(equation2)
+        
       
     def add_constraint(self,constraint):
         c= next(self.counter)
