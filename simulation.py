@@ -38,6 +38,7 @@ class Simulation:
         self.set_constraint=[]
         self.command=None
         self.aa_acids_molecule=None
+        self.GAPOR=False
         
     def read_excel_file(self, filename):
         excel_data = pd.read_excel(filename, sheet_name=None)
@@ -77,6 +78,9 @@ class Simulation:
         self.lp_file_constraints.add_constraint("metaboicMass + ribosome_mass + UP - total_protein = 0")
         
         self.lp_file_constraints.add_constraint("rRNA + tRNA + mRNA  - RNA= 0")
+        
+        if self.GAPOR!=False:
+            self.lp_file_constraints.GAPOR()
 
         if self.aa_acids_molecule!=True:
             self.lp_file_constraints.add_constraint("total_protein + RNA + Glycogen = 0.93")
